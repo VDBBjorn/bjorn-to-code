@@ -69,8 +69,7 @@ jobs:
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+            --site "${{ steps.pages.outputs.origin }}"
       - name: Build Pagefind Index
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} pagefind --site dist

@@ -1,6 +1,6 @@
 {
-  "name": "multiterm-astro",
-  "description": "A terminal-inspired coding blog built with Astro.",
+  "name": "bjorn-to-code",
+  "description": "Personal blog",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
