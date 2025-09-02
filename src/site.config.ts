@@ -51,11 +51,11 @@ const config: SiteConfig = {
   navLinks: [
     {
       name: 'Home',
-      url: '/',
+      url: '/bjorn-to-code',
     },
     {
       name: 'Blog',
-      url: '/posts',
+      url: '/bjorn-to-code/posts',
     },
   ],
   // The theming configuration for the site.
