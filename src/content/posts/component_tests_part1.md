@@ -22,7 +22,7 @@ These tests gave us something the unit tests never could: **confidence to refact
 
 ## Why Not BDD Tools Like SpecFlow?
 
-This approach shares similarities with BDD (Behavior Driven Development), but we chose not to use tools like SpecFlow. SpecFlow for .NET is no longer actively maintained, and frankly, our approach gives you much more flexibility with less complexity.
+This approach shares similarities with BDD (Behavior Driven Development), but we chose not to use tools like SpecFlow or [Reqnroll](https://reqnroll.net/). SpecFlow for .NET is no longer actively maintained, and frankly, our approach gives you much more flexibility with less complexity.
 
 BDD tools often become maintenance headaches themselves. You're maintaining Gherkin syntax, step definitions, and the glue code between them. Our component test approach gives you the readability benefits of BDD while staying in pure C# with full IDE support, refactoring capabilities, and type safety.
 
@@ -89,7 +89,7 @@ Each step is a small class that does one thing well. The same steps get reused a
 
 ## Why This Works
 
-**Reusability**: That `SeedEvent` step? Used across booking tests, cancellation tests, capacity tests. Change the seeding logic once, all tests update.
+**Reusability**: That `SeedEvent` step? Used across all differents kinds of tests. Change the seeding logic once, all tests update.
 
 **Readability**: Even non-developers can read these tests and understand exactly what business scenarios are covered.
 
