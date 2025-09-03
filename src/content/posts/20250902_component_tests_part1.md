@@ -2,7 +2,7 @@
 title: 'Making Integration Tests Actually Maintainable'
 published: 2025-09-02
 draft: false
-description: 'Stop writing unreliable integration tests. Learn how component tests makes your tests readable, reusable, and actually maintainable.'
+description: 'How to write integration tests that give you confidence to deploy, not a maintenance nightmare.'
 series: 'Component tests'
 tags: ['dotnet', 'testing', 'integration-tests', 'component-tests']
 ---
