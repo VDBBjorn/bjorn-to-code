@@ -9,25 +9,7 @@ tags: ['dotnet', 'testing', 'integration-tests', 'component-tests']
 
 Integration tests should give you confidence to deploy. Instead, they're usually a maintenance nightmare.
 
-At a previous project I worked on, we had hundreds of unit tests testing internal components in isolation. But we had zero integration tests. The unit tests were unreliable - every refactoring randomly broke tests because they were testing implementation details, not behavior.
-
-We couldn't deploy with confidence because we weren't testing the system as a whole.
-
-## Testing from the Outside In
-
-We introduced what we called "component tests" - tests that exercise a single service end-to-end from the outside in. Instead of mocking every dependency and testing individual classes, we test complete user journeys against the real application.
-
-A component test is essentially an integration test scoped to one component. You're testing your entire service in integration - database, message bus, external APIs - but you're not crossing service boundaries into other components.
-
-These tests gave us something the unit tests never could: **confidence to refactor**. As long as the external behavior remained the same, we could restructure the internals without breaking tests.
-
-## Why Not BDD Tools Like SpecFlow?
-
-This approach shares similarities with BDD (Behavior Driven Development), but we chose not to use tools like SpecFlow or [Reqnroll](https://reqnroll.net/). SpecFlow for .NET is no longer actively maintained, and frankly, our approach gives you much more flexibility with less complexity.
-
-BDD tools often become maintenance headaches themselves. You're maintaining Gherkin syntax, step definitions, and the glue code between them. Our component test approach gives you the readability benefits of BDD while staying in pure C# with full IDE support, refactoring capabilities, and type safety.
-
-## The Traditional Pain
+## The Problem: Integration Test Hell
 
 Here's what most integration tests look like:
 
@@ -45,7 +27,9 @@ public async Task CreateEvent_WhenValidRequest_ReturnsEventId()
 
 Every test is 50+ lines of boilerplate. You can't see what the test is actually testing. Copy-paste logic everywhere. Change one thing, break five tests.
 
-## What If Tests Looked Like This?
+Meanwhile, your unit tests are brittle - every refactoring breaks them because they test implementation details, not behavior. You can't deploy with confidence because you're not testing the system as a whole.
+
+## What If Tests Looked Like This Instead?
 
 ```csharp
 private readonly Scenario _context = new Scenario()
@@ -77,7 +61,24 @@ public Task WhenCreateEventWithDuplicateName_Then_ValidationError()
 
 Now you can **immediately see what each test does**. The noise is gone. The test names become living documentation of your business rules.
 
-## Component Tests
+## The Solution: Component Tests
+
+This approach uses what we call "component tests" - integration tests scoped to a single component that you own.
+
+### Testing from the Outside In
+
+Instead of mocking every dependency and testing individual classes, we test complete user journeys against the real application. A component test verifies that when you call your service's API with specific inputs, you get the expected outputs and side effects.
+
+### The Right Scope
+
+Think of it this way: if you're responsible for the "Basket" service, your component tests verify that service works correctly in integration - but they don't test the downstream "Inventory Service" or "Payment Service" that other teams own.
+
+This scoping is crucial because:
+- **You own the test failures** - when a component test breaks, it's your code that needs fixing
+- **Fast feedback loops** - tests run in your development environment with your build
+- **Clear ownership** - each team maintains tests for their own components
+
+## How Component Tests Work
 
 Instead of cramming everything into test methods, extract the logic into reusable steps:
 
@@ -88,9 +89,17 @@ Instead of cramming everything into test methods, extract the logic into reusabl
 
 Each step is a small class that does one thing well. The same steps get reused across multiple tests.
 
+## Why Not BDD Tools Like SpecFlow?
+
+This approach shares similarities with BDD (Behavior Driven Development), but we chose not to use tools like SpecFlow or [Reqnroll](https://reqnroll.net/). SpecFlow for .NET is no longer actively maintained, and frankly, our approach gives you much more flexibility with less complexity.
+
+BDD tools often become maintenance headaches themselves. You're maintaining Gherkin syntax, step definitions, and the glue code between them. Our component test approach gives you the readability benefits of BDD while staying in pure C# with full IDE support, refactoring capabilities, and type safety.
+
 ## Why This Works
 
-**Reusability**: That `SeedEvent` step? Used across all differents kinds of tests. Change the seeding logic once, all tests update.
+**Developer-owned**: These tests live in your component's repository and run as part of your build. When they fail, you know it's your code that needs attention.
+
+**Reusability**: That `SeedEvent` step? Used across all different kinds of tests. Change the seeding logic once, all tests update.
 
 **Readability**: Even non-developers can read these tests and understand exactly what business scenarios are covered.
 
@@ -98,16 +107,20 @@ Each step is a small class that does one thing well. The same steps get reused a
 
 **Debuggability**: Set breakpoints in steps, not buried in 50-line test methods.
 
+## A Word of Caution: Don't Overextend
+
+You *could* theoretically extend this framework to test across multiple real components - essentially running end-to-end tests using the same step-based approach. However, **be very careful here**.
+
+Keep component tests focused on what you own. Let other teams use the tools they're comfortable with for broader integration scenarios.
+
 ## The Transformation
 
-Before: "We can't refactor anything because it breaks all our unit tests."
+**Before**: "We can't refactor anything because it breaks all our unit tests."
 
-After: "Our component tests let us refactor with confidence while ensuring the system still works."
+**After**: "Our component tests let us refactor with confidence while ensuring the system still works."
 
-Component tests transformed our testing strategy from testing implementation details to testing business behavior. We went from unit tests that broke on every change to robust component tests that only broke when actual behavior changed.
+Component tests transformed our testing strategy from testing implementation details to testing business behavior. We went from unit tests that broke on every change to robust integration tests that only broke when actual behavior changed.
 
 Most importantly: **we could deploy automatically with confidence** because we knew our component hadn't changed for people using it from the outside.
 
 The tests became our safety net for refactoring, our insurance policy when deploying and our documentation for new team members.
-
----
