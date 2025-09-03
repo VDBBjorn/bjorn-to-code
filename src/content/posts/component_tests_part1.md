@@ -2,13 +2,13 @@
 title: 'Making Integration Tests Actually Maintainable'
 published: 2025-09-02
 draft: false
-description: 'Stop writing brittle integration tests. Learn how component tests makes your tests readable, reusable, and actually maintainable.'
+description: 'Stop writing unreliable integration tests. Learn how component tests makes your tests readable, reusable, and actually maintainable.'
 tags: ['dotnet', 'testing', 'integration-tests', 'component-tests']
 ---
 
 Integration tests should give you confidence to deploy. Instead, they're usually a maintenance nightmare.
 
-At a previous project I worked on, we had hundreds of unit tests testing internal components in isolation. But we had zero integration tests. The unit tests were brittle - every refactoring randomly broke tests because they were testing implementation details, not behavior.
+At a previous project I worked on, we had hundreds of unit tests testing internal components in isolation. But we had zero integration tests. The unit tests were unreliable - every refactoring randomly broke tests because they were testing implementation details, not behavior.
 
 We couldn't deploy with confidence because we weren't testing the system as a whole.
 
