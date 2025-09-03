@@ -59,7 +59,7 @@ const config: SiteConfig = {
       url: '/',
     },
     {
-      name: 'Blog',
+      name: 'Posts',
       url: '/posts',
     },
   ],
