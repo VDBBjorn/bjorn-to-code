@@ -4,4 +4,7 @@ avatarImage:
   alt: 'Bjorn Vandenbussche'
 ---
 
-Thanks for reading my blog post! Feel free to check out my other posts or contact me via the social links in the footer.
+Thanks for reading! 
+
+If you have feedback or spot any issues, please let me know using the social links in the footer!
+

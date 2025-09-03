@@ -5,4 +5,4 @@ avatarImage:
 githubCalendar: 'vdbbjorn'
 ---
 
-Personal blog where I share insights, opinions and experiences on software development, with a strong focus on .NET and Azure. 
+Hi, I'm Bjorn! Every week, I share practical insights, hands-on experiences and thoughtful opinions on software development with a strong focus on .NET and Azure.
