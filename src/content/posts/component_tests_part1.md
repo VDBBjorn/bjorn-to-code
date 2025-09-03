@@ -40,7 +40,7 @@ Every test is 50+ lines of boilerplate. You can't see what the test is actually 
 
 ```csharp
 
-private readonly ScenarioContext _context = new ScenarioContext(serviceFixture, testOutputHelper)
+private readonly Scenario _context = new Scenario(serviceFixture, testOutputHelper)
         .Background(
             new SeedTenant().WithName("Pied Piper"),
             new SeedUser().WithName("Richard Hendricks")
