@@ -4,7 +4,7 @@ avatarImage:
   alt: 'Bjorn Vandenbussche'
 ---
 
-Thanks for reading! 
+Future Bjorn will probably disagree with this post, but present Bjorn thinks it's brilliant. 
 
-If you have feedback or spot any issues, please let me know using the social links in the footer!
+What's your take? Please let me know using the social links in the footer!
 
