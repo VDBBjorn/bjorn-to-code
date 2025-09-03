@@ -1,6 +1,6 @@
 {
   "name": "bjorn-to-code",
-  "description": "Personal blog",
+  "description": "Personal blog about software development",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
