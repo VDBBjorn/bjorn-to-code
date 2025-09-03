@@ -14,7 +14,7 @@ We couldn't deploy with confidence because we weren't testing the system as a wh
 
 ## Testing from the Outside In
 
-I introduced what we called "component tests" - tests that exercise the entire service from the outside in. Instead of mocking every dependency and testing individual classes, we test complete user journeys against the real application.
+We introduced what we called "component tests" - tests that exercise the entire service from the outside in. Instead of mocking every dependency and testing individual classes, we test complete user journeys against the real application.
 
 These tests gave us something the unit tests never could: **confidence to refactor**. As long as the external behavior remained the same, we could restructure the internals without breaking tests.
 
