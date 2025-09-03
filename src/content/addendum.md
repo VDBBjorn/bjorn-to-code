@@ -1,6 +1,6 @@
 ---
 avatarImage:
-  src: 'https://avatars.githubusercontent.com/u/4362040?v=4'
+  src: '~/images/736706d1-d849-4b73-a31e-5d03e5c3c6db.png'
   alt: 'Bjorn Vandenbussche'
 ---
 
