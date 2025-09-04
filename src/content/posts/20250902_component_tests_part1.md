@@ -58,7 +58,6 @@ public async Task CreateEvent_WhenValidRequest_ReturnsEventId()
 **Step-based tests are readable:**
 
 ```csharp
-```csharp
 private readonly ScenarioContext _scenarioContext = new ScenarioContext(serviceFixture, testOutputHelper)
     .Background(
         new SeedVenue().WithName("Conference Room 404").WithAddress("123 Null Pointer Ave"),
