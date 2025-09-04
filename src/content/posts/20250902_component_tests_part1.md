@@ -107,25 +107,15 @@ Each step is a small class that does one thing well. The same steps get reused a
 
 Write each scenario at the lowest level that can express the behavior without mocking or depending on private structure. A scenario should live in exactly one layer.
 
-- Unit tests  
-  - Purpose: Prove pure domain logic, invariants, edge cases.  
-  - Keep: Pure functions, calculation rules, complex branching.  
-  - Avoid: Mock-heavy tests that restate implementation.
+### Where Each Test Type Fits
 
-- Component tests 
-  - Purpose: Primary refactoring safety net at the boundary you own (API/handler) with real wiring + owned dependencies (DB, serializers, DI).  
-  - Keep: Business behaviors, side effects, validation rules, state transitions.  
-  - Avoid: Calling other services (stub at boundary).
+**Unit tests** prove your pure domain logic—think calculation rules, invariants, and complex branching. Use them for pure functions, but avoid mock-heavy tests that just restate your implementation.
 
-- End-to-End (user journeys)  
-  - Purpose: A few cross-service lifelines that are crucial to your application (signup, purchase, billing).  
-  - Keep: 1–3 happy paths + a critical failure path if truly cross-cutting.  
-  - Avoid: Matrix of permutations already covered inside components.
+**Component tests** are your main safety net for refactoring. They run at the boundary you own (like your API or handler), with real dependencies wired up (database, serializers, DI). Focus on business behaviors, side effects, validation, and state transitions. Don’t call other services—stub at the boundary.
 
-- (Optional) Contract / consumer tests  
-  - Purpose: Lock request/response expectations between services without full E2E cost.  
-  - Keep: Versioned payload shape & semantics.  
-  - Avoid: Rechecking business rules already covered in component tests.
+**End-to-end tests** cover a handful of critical user journeys that span multiple services (signup, purchase, billing). Keep just 1–3 happy paths and a key failure case. Avoid a matrix of permutations already covered by component tests.
+
+**Contract/consumer tests** (optional) lock down request/response expectations between services, without the full cost of E2E. Use them to verify versioned payload shapes and semantics, but don’t recheck business rules already covered by component tests.
 
 ## Why Not BDD Tools Like SpecFlow?
 
@@ -162,3 +152,7 @@ Component tests transformed our testing strategy from testing implementation det
 Most importantly: **we could deploy automatically with confidence** because we knew our component hadn't changed for people using it from the outside.
 
 The tests became our safety net for refactoring, our insurance policy when deploying and our documentation for new team members.
+
+---
+
+In the next post, I'll share how to implement this step-based testing framework in your .NET projects, complete with code examples and best practices.
