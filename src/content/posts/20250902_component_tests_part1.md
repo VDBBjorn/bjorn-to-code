@@ -1,5 +1,5 @@
 ---
-title: 'Own Your Boundary: Component Tests for Confident Refactoring'
+title: 'Own your boundary: component tests for confident refactoring'
 published: 2025-09-02
 draft: false
 description: "Gain the confidence to refactor boldly. Component tests verify business behavior without breaking on implementation changes, filling the gap between fragile unit tests and slow E2E tests."
@@ -11,7 +11,7 @@ You want to refactor your code, but you're worried you might break something imp
 
 **The problem: your tests work against you, not for you.**
 
-## Your Tests Are Fighting Refactoring
+## Your tests are fighting refactoring
 
 **Unit tests break when you refactor** because they test implementation, not behavior. Move a class? Fix 15 tests. Change your domain model? Rewrite all your mocks.
 
@@ -19,7 +19,7 @@ You want to refactor your code, but you're worried you might break something imp
 
 You need tests that prove your business logic still works after refactoring, without breaking every time you move code around.
 
-## Component Tests: Test Your Boundary, Not Your Internals
+## Component tests: test your boundary, not your internals
 
 Component tests solve this by testing **what you own** through **your API boundary**:
 
@@ -36,7 +36,7 @@ POST /events { "name": "Tech Conference", "date": "2025-10-15" }
 
 This means you can refactor your internals without breaking tests, while still proving your business logic works.
 
-## Make Them Readable With Steps
+## Make them readable with steps
 
 The problem with most integration tests? They're unreadable:
 
@@ -71,6 +71,10 @@ Each step is a reusable class. Change how you seed users? Update one `AsUser` cl
 
 Component tests become your main safety net for refactoring. They sit between unit tests (pure domain logic) and E2E tests (critical user journeys), focusing on business behaviors through your API.
 
+:::bjorn
+Component tests give you **refactoring confidence**: the ability to improve your code structure while proving business behavior stays intact.
+:::
+
 **Why this works:**
 
 **Developer-owned** - These tests live in your repo and run with your build. When they fail, it's your code.
@@ -79,7 +83,7 @@ Component tests become your main safety net for refactoring. They sit between un
 
 **Maintainable** - When business rules change, update the relevant steps. When implementation changes, tests keep passing.
 
-## The Result
+## The result
 
 **Before**: "We can't refactor because our tests will break."
 
@@ -87,10 +91,6 @@ Component tests become your main safety net for refactoring. They sit between un
 
 Component tests become your safety net for refactoring and your documentation for new team members.
 
-:::bjorn
-Component tests give you **refactoring confidence**—the ability to improve your code structure while proving business behavior stays intact.
-:::
-
 ---
 
-Next post: How to implement this in .NET with real code examples.
+Next post: How to implement this with real code examples.
