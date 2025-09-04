@@ -78,6 +78,8 @@ public Task WhenCreateEventValid_Then_EventIsCreated()
 
 The background is set up once on the `ScenarioContext` and applies to all tests using it. Change how you seed venues or users? Update one `SeedVenue` or `SeedUser` class, not 50 tests.
 
+We've built a small *framework* around this pattern to make it even easier. It handles the plumbing while you focus on writing readable, composable steps (I prefer not to use the word "framework", but OK, it's a small framework 🙃)
+
 Component tests become your main safety net for refactoring. They sit between unit tests (pure domain logic) and E2E tests (critical user journeys), focusing on business behaviors through your API.
 
 **Why this works:**
