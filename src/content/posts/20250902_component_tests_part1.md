@@ -36,6 +36,10 @@ POST /events { "name": "Tech Conference", "date": "2025-10-15" }
 
 This means you can refactor your internals without breaking tests, while still proving your business logic works.
 
+:::bjornthinking
+Component tests give you **refactoring confidence**: the ability to improve your code structure while proving business behavior stays intact.
+:::
+
 ## Make them readable with steps
 
 The problem with most integration tests? They're unreadable:
@@ -70,10 +74,6 @@ public Task CreateEvent_Success()
 Each step is a reusable class. Change how you seed users? Update one `AsUser` class, not 50 tests.
 
 Component tests become your main safety net for refactoring. They sit between unit tests (pure domain logic) and E2E tests (critical user journeys), focusing on business behaviors through your API.
-
-:::bjornthinking
-Component tests give you **refactoring confidence**: the ability to improve your code structure while proving business behavior stays intact.
-:::
 
 **Why this works:**
 
