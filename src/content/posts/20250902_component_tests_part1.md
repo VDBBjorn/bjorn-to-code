@@ -1,12 +1,11 @@
 ---
-title: 'Making Integration Tests Actually Maintainable'
+title: 'Component Tests: Making Integration Tests Actually Maintainable'
 published: 2025-09-02
 draft: false
-description: 'How to write integration tests that give you confidence to deploy, not a maintenance nightmare.'
+description: "Replace 50-line boilerplate integration tests with structured, readable component tests. Test business behavior instead of implementation details using a step-based approach that doesn't break when you refactor."
 series: 'Component tests'
 tags: ['dotnet', 'testing', 'integration-tests', 'component-tests']
 ---
-
 Integration tests should give you confidence to deploy. Instead, they're usually a maintenance nightmare.
 
 ## The Problem: Integration Test Hell
@@ -27,7 +26,14 @@ public async Task CreateEvent_WhenValidRequest_ReturnsEventId()
 
 Every test is 50+ lines of boilerplate. You can't see what the test is actually testing. Copy-paste logic everywhere. Change one thing, break five tests.
 
+**The real cost isn't just maintenance time**. 
+- Your deployment pipeline becomes fragile - tests fail on unrelated changes, blocking releases. 
+- Teams avoid refactoring because it means fixing dozens of tests. 
+- Architecture decisions get driven by "what won't break the tests" instead of "what's the right design."
+
 Meanwhile, your unit tests are brittle - every refactoring breaks them because they test implementation details, not behavior. You can't deploy with confidence because you're not testing the system as a whole.
+
+The result: technical debt accumulates, velocity drops, and your test suite becomes an obstacle to good architecture instead of enabling it.
 
 ## What If Tests Looked Like This Instead?
 
@@ -65,6 +71,10 @@ Now you can **immediately see what each test does**. The noise is gone. The test
 
 This approach uses what we call "component tests" - integration tests scoped to a single component that you own.
 
+**Why not just better unit tests?** Unit tests will always break when you refactor because they're coupled to implementation details. Plus, they require extensive mocking and stubbing of dependencies - creating another layer of maintenance burden and potential false positives. End-to-end tests are too slow and fragile for rapid feedback. Component tests hit the sweet spot: they test real behavior through your actual API with real dependencies, but stay scoped to what you control.
+
+**The game-changer is refactoring confidence.** Component tests enabled us to aggressively refactor internal implementation while maintaining behavior contracts. We could completely restructure our domain model, swap out infrastructure components, and optimize performance - all while the tests continued to pass because the business behavior remained unchanged.
+
 ### Testing from the Outside In
 
 Instead of mocking every dependency and testing individual classes, we test complete user journeys against the real application. A component test verifies that when you call your service's API with specific inputs, you get the expected outputs and side effects.
@@ -93,7 +103,7 @@ Each step is a small class that does one thing well. The same steps get reused a
 
 This approach shares similarities with BDD (Behavior Driven Development), but we chose not to use tools like SpecFlow or [Reqnroll](https://reqnroll.net/). SpecFlow for .NET is no longer actively maintained, and frankly, our approach gives you much more flexibility with less complexity.
 
-BDD tools often become maintenance headaches themselves. You're maintaining Gherkin syntax, step definitions, and the glue code between them. Our component test approach gives you the readability benefits of BDD while staying in pure C# with full IDE support, refactoring capabilities, and type safety.
+BDD tools often become maintenance headaches themselves. You're maintaining Gherkin syntax, step definitions, and the glue code between them. Our component test approach gives you the readability benefits of BDD while staying in pure C# with full IDE support, refactoring capabilities, type safety, and debugging with breakpoints.
 
 ## Why This Works
 
