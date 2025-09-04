@@ -4,7 +4,7 @@ published: 2025-09-02
 draft: false
 description: "Replace 50-line boilerplate integration tests with structured, readable component tests. Test business behavior instead of implementation details using a step-based approach that doesn't break when you refactor."
 series: 'Component tests'
-tags: ['dotnet', 'testing', 'integration-tests', 'component-tests']
+tags: ['dotnet', 'testing', 'integration-tests', 'component-tests', 'bdd']
 ---
 Integration tests should give you confidence to deploy. Instead, they're usually a maintenance nightmare.
 
