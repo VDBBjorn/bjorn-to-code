@@ -58,20 +58,25 @@ public async Task CreateEvent_WhenValidRequest_ReturnsEventId()
 **Step-based tests are readable:**
 
 ```csharp
+```csharp
+private readonly ScenarioContext _scenarioContext = new ScenarioContext(serviceFixture, testOutputHelper)
+    .Background(
+        new SeedVenue().WithName("Conference Room 404").WithAddress("123 Null Pointer Ave"),
+        new SeedUser().WithName("Alice Debugger").WithEmail("alice@dev.local")
+    );
+
 [Fact]
-public Task CreateEvent_Success()
+public Task WhenCreateEventValid_Then_EventIsCreated()
 {
-    return new Scenario()
-        .Arrange(new AsUser("john@example.com"))
-        .Act(new CreateEvent().WithName("Tech Conference"))
+    return new Scenario(_scenarioContext)
+        .Act(new CreateEventStep())
         .Assert(
             new RequestSucceeded(),
-            new EventExists().WithName("Tech Conference")
-        );
+            new EventIsCreated());
 }
 ```
 
-Each step is a reusable class. Change how you seed users? Update one `AsUser` class, not 50 tests.
+The background is set up once on the `ScenarioContext` and applies to all tests using it. Change how you seed venues or users? Update one `SeedVenue` or `SeedUser` class, not 50 tests.
 
 Component tests become your main safety net for refactoring. They sit between unit tests (pure domain logic) and E2E tests (critical user journeys), focusing on business behaviors through your API.
 
