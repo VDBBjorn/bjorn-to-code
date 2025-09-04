@@ -40,7 +40,7 @@ This means you can refactor your internals without breaking tests, while still p
 Component tests give you **refactoring confidence**: the ability to improve your code structure while proving business behavior stays intact.
 :::
 
-## Make them readable with steps
+## But how do you actually implement this?
 
 The problem with most integration tests? They're unreadable:
 
@@ -95,7 +95,7 @@ Component tests become your main safety net for refactoring. They sit between un
 
 **After**: "Our tests prove the behavior works. Refactor away."
 
-Component tests become your safety net for refactoring and your documentation for new team members.
+> Component tests become your safety net for refactoring and your documentation for new team members.
 
 ---
 
