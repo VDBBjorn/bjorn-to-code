@@ -71,7 +71,7 @@ Each step is a reusable class. Change how you seed users? Update one `AsUser` cl
 
 Component tests become your main safety net for refactoring. They sit between unit tests (pure domain logic) and E2E tests (critical user journeys), focusing on business behaviors through your API.
 
-:::bjorn
+:::bjornthinking
 Component tests give you **refactoring confidence**: the ability to improve your code structure while proving business behavior stays intact.
 :::
 

@@ -131,6 +131,7 @@ const config: SiteConfig = {
   // Try using the excellent https://squoosh.app web app for creating small webp files
   characters: {
     bjorn: '/bjorn-avatar.webp',
+    bjornthinking: '/bjorn-thinking.webp',
   },
 }
 
