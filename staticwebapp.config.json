@@ -1,0 +1,9 @@
+{
+  "globalHeaders": {
+    "/giscus/*": {
+      "Access-Control-Allow-Origin": "https://giscus.app",
+      "Access-Control-Allow-Methods": "GET",
+      "Access-Control-Allow-Headers": "Content-Type"
+    }
+  }
+}
