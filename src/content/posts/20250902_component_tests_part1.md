@@ -76,9 +76,7 @@ This approach uses what we call "component tests" - integration tests scoped to 
 **The game-changer is refactoring confidence.** Component tests enabled us to aggressively refactor internal implementation while maintaining behavior contracts. We could completely restructure our domain model, swap out infrastructure components, and optimize performance - all while the tests continued to pass because the business behavior remained unchanged.
 
 :::bjorn
-
-The real value of component tests isn’t just catching bugs—it’s the confidence to refactor boldly, knowing your business behavior is protected.
-
+The real value of component tests isn’t just catching bugs. It’s the **confidence to refactor boldly**, knowing your business behavior is protected.
 :::
 
 ### Testing from the Outside In
