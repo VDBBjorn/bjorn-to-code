@@ -1,5 +1,5 @@
 ---
-title: 'Component Tests: Making Integration Tests Actually Maintainable'
+title: 'Own Your Boundary: Component Tests for Confident Refactoring'
 published: 2025-09-02
 draft: false
 description: "Replace 50-line boilerplate integration tests with structured, readable component tests. Test business behavior instead of implementation details using a step-based approach that doesn't break when you refactor."
@@ -102,6 +102,30 @@ Instead of cramming everything into test methods, extract the logic into reusabl
 - **Assert steps** verify the outcome and side effects
 
 Each step is a small class that does one thing well. The same steps get reused across multiple tests.
+
+## Where Component Tests Fit in the Test Stack
+
+Write each scenario at the lowest level that can express the behavior without mocking or depending on private structure. A scenario should live in exactly one layer.
+
+- Unit tests  
+  - Purpose: Prove pure domain logic, invariants, edge cases.  
+  - Keep: Pure functions, calculation rules, complex branching.  
+  - Avoid: Mock-heavy tests that restate implementation.
+
+- Component tests 
+  - Purpose: Primary refactoring safety net at the boundary you own (API/handler) with real wiring + owned dependencies (DB, serializers, DI).  
+  - Keep: Business behaviors, side effects, validation rules, state transitions.  
+  - Avoid: Calling other services (stub at boundary).
+
+- End-to-End (user journeys)  
+  - Purpose: A few cross-service lifelines that are crucial to your application (signup, purchase, billing).  
+  - Keep: 1–3 happy paths + a critical failure path if truly cross-cutting.  
+  - Avoid: Matrix of permutations already covered inside components.
+
+- (Optional) Contract / consumer tests  
+  - Purpose: Lock request/response expectations between services without full E2E cost.  
+  - Keep: Versioned payload shape & semantics.  
+  - Avoid: Rechecking business rules already covered in component tests.
 
 ## Why Not BDD Tools Like SpecFlow?
 
