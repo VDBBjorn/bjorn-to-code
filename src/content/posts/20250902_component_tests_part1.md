@@ -4,7 +4,7 @@ published: 2025-09-02
 draft: false
 description: "Gain the confidence to refactor boldly. Component tests verify business behavior without breaking on implementation changes, filling the gap between fragile unit tests and slow E2E tests."
 series: 'Component tests'
-tags: ['dotnet', 'testing', 'integration-tests', 'component-tests', 'bdd']
+tags: ['testing']
 ---
 
 You want to refactor your code, but you're worried you might break something important. How do you know your changes won't cause problems?
