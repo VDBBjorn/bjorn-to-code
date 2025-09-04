@@ -118,7 +118,13 @@ const config: SiteConfig = {
   // Take the values from the generated script tag at https://giscus.app and fill them in here.
   // IMPORTANT: Update giscus.json in the root of the project with your own website URL
   // If you don't want to use Giscus, set this to undefined.
-  giscus: undefined,
+  giscus: {
+    repo: 'VDBBjorn/bjorn-to-code',
+    repoId: 'R_kgDOPoE2yw',
+    category: 'Giscus',
+    categoryId: 'DIC_kwDOPoE2y84Cu9Cq',
+    reactionsEnabled: true, // Enable reactions on post itself
+  },
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)
