@@ -38,7 +38,7 @@ The result: technical debt accumulates, velocity drops, and your test suite beco
 ## What If Tests Looked Like This Instead?
 
 ```csharp
-private readonly Scenario _context = new Scenario()
+private readonly ScenarioContext _context = new ScenarioContext()
         .Background(
             new SeedUser().WithName("John Smith")
         );
