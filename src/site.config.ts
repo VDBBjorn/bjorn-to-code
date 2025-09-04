@@ -121,8 +121,8 @@ const config: SiteConfig = {
   giscus: {
     repo: 'VDBBjorn/bjorn-to-code',
     repoId: 'R_kgDOPoE2yw',
-    category: 'Giscus',
-    categoryId: 'DIC_kwDOPoE2y84Cu9Cq',
+    category: 'Q&A',
+    categoryId: 'DIC_kwDOPoE2y84Cu9Cs',
     reactionsEnabled: true, // Enable reactions on post itself
   },
   // These are characters available for the character chat feature.
