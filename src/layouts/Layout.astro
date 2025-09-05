@@ -158,6 +158,11 @@ let generatedCss: string = cssLines.join('\n')
     <script data-goatcounter="https://codest.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </head>
   <body class="w-full h-full m-0 bg-background text-foreground">
+    <!-- GoatCounter tracking pixel fallback for users without JavaScript -->
+    <noscript>
+      <img src="https://codest.goatcounter.com/count?p={Astro.url.pathname}" alt="" style="border:none; height:1px; width:1px; position:absolute;" />
+    </noscript>
+    
     <div
       class="flex flex-col max-w-3xl min-h-screen border-accent/10 m-auto p-3 sm:py-5 sm:px-6 md:py-10"
     >
