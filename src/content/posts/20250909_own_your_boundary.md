@@ -95,8 +95,6 @@ Component tests become your main safety net for refactoring. They sit between un
 
 **After**: "Our tests prove the behavior works. Refactor away."
 
-> Component tests become your safety net for refactoring and your documentation for new team members.
+Component tests become your safety net for refactoring and your documentation for new team members.
 
 ---
-
-Next post: How to implement this with real code examples.
