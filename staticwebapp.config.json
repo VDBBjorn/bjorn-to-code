@@ -1,9 +1,17 @@
 {
-  "globalHeaders": {
-    "/giscus/*": {
-      "Access-Control-Allow-Origin": "https://giscus.app",
-      "Access-Control-Allow-Methods": "GET",
-      "Access-Control-Allow-Headers": "Content-Type"
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
     }
-  }
+  },
+  "navigationFallback": {
+    "rewrite": "/404.html"
+  },
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ]
 }
