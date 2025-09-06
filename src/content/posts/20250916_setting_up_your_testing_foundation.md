@@ -1,7 +1,7 @@
 ---
 title: 'Component tests: from zero to refactoring confidence in 10 minutes'
-published: 2025-09-09
-draft: false
+published: 2025-09-16
+draft: true
 description: "Get your component tests running in minutes. Learn the practical setup with ServiceFixture, steps, and scenarios using xUnit v3 and the Microsoft Testing Platform."
 series: 'Component tests'
 tags: ['testing']
